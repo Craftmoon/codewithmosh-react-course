@@ -48,18 +48,8 @@ class App extends Component {
     this.setState({ selectedGenre: genre, currentPage: 1 });
   };
 
-  handleSort = path => {
-    const sortColumn = { ...this.state.sortColumn };
-    if (sortColumn.path === path)
-      sortColumn.order = sortColumn.order === "asc" ? "desc" : "asc";
-    else {
-      sortColumn.path = path;
-      sortColumn.order = "asc";
-    }
-
-    this.setState({
-      sortColumn
-    });
+  handleSort = sortColumn => {
+    this.setState({ sortColumn: sortColumn });
   };
 
   render() {
@@ -99,11 +89,12 @@ class App extends Component {
           <div className="col-10">
             <StatusLabel movieCount={filteredMovies.length} className="p-2" />
             <MoviesTable
-              onSort={this.handleSort}
               tableHeadTitles={this.state.headTitles}
               movies={movies}
+              onSort={this.handleSort}
               onDelete={this.handleDelete}
               onLike={this.handleLike}
+              sortColumn={this.state.sortColumn}
             />
             <Pagination
               itemCount={filteredMovies.length}
