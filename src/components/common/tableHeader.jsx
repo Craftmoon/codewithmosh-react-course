@@ -1,8 +1,6 @@
 import React from "react";
 
-const TableHeader = props => {
-  const { onSort, columns, sortColumn } = props;
-
+const TableHeader = ({ onSort, columns, sortColumn }) => {
   const Sort = path => {
     if (sortColumn.path === path)
       sortColumn.order = sortColumn.order === "asc" ? "desc" : "asc";

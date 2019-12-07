@@ -1,11 +1,8 @@
 import React from "react";
-import TableHeader from "../common/tableHeader";
-import TableBody from "../common/tableBody";
 import LikeComponent from "../common/like";
+import Table from "../common/table";
 
-const MoviesTable = props => {
-  const { movies, onDelete, onLike, onSort, sortColumn } = props;
-
+const MoviesTable = ({ movies, onDelete, onLike, onSort, sortColumn }) => {
   const columns = [
     {
       path: "title",
@@ -45,15 +42,13 @@ const MoviesTable = props => {
   ];
 
   return (
-    <table className="table">
-      <TableHeader columns={columns} onSort={onSort} sortColumn={sortColumn} />
-      <TableBody
-        columns={columns}
-        data={movies}
-        onDelete={onDelete}
-        onLike={onLike}
-      />
-    </table>
+    <Table
+      data={movies}
+      columns={columns}
+      onSort={onSort}
+      onLike={onLike}
+      sortColumn={sortColumn}
+    />
   );
 };
 
