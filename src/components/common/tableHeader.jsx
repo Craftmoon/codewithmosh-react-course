@@ -1,7 +1,7 @@
 import React from "react";
 
 const TableHeader = ({ onSort, columns, sortColumn }) => {
-  const Sort = path => {
+  const sort = path => {
     if (sortColumn.path === path)
       sortColumn.order = sortColumn.order === "asc" ? "desc" : "asc";
     else {
@@ -26,7 +26,7 @@ const TableHeader = ({ onSort, columns, sortColumn }) => {
             className="clickable"
             key={column.path || column.key}
             onClick={() => {
-              Sort(column.path);
+              sort(column.path);
             }}
           >
             {column.label}

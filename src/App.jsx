@@ -61,17 +61,23 @@ class App extends Component {
       movies: allMovies
     } = this.state;
 
+    // if no genre is selected return all movies, otherwise filter by genre
     const filteredMovies =
       selectedGenre && selectedGenre._id
         ? allMovies.filter(movie => movie.genre._id === selectedGenre._id)
         : allMovies;
 
+    /**
+     * build the sortedMovies array by ordering it by path (title, genre.name, numberInStock) according to the
+     * currently selected order (asc or desc)
+     */
     const sortedMovies = _.orderBy(
       filteredMovies,
       [sortColumn.path],
       [sortColumn.order]
     );
 
+    // Create array of movies to be shown in the current page
     const movies = paginate(sortedMovies, currentPage, pageSize);
 
     return { totalCount: filteredMovies.length, data: movies };
