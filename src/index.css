@@ -11,11 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
 .clickable {
   cursor: pointer;
 }
 
 .clickable:hover {
   background-color: #ddd;
+}
+
+.navbar {
+  margin-bottom: 30px;
 }
